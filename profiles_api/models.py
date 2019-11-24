@@ -13,14 +13,14 @@ class UserProfileManager(BaseUserManager):
             raise ValueError('User must have a Email Address')
 
         email = self.normalize_email(email)
-        user = self.model(email=email, fname=fname, lname=lname)
+        user = self.model(email=email, fname=fname, lname=lname,)
 
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
-    def create_superuser(self, email ,fname ,lname):
+    def create_superuser(self, email ,fname ,lname ,password):
         """Create and save a new superuser with given details"""
         user = self.create_user(email ,fname ,lname ,password)
 
